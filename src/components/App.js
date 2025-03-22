@@ -13,16 +13,14 @@ function App() {
 
 	function handleCategoryClick(event){
 		setCategoryFilter(event.target.value)
-		//filterTasks()
 	}
-
 
 	return (
 		<div className="App">
 		<h2>My tasks</h2>
 		<CategoryFilter categories={CATEGORIES} selectedCategory={selectedCategory} handleCategoryClick={handleCategoryClick}/>
 		<NewTaskForm />
-		<TaskList tasks={TASKS}/>
+		<TaskList tasks={TASKS} selectedCategory={selectedCategory}/>
 		</div>
 	);
 }

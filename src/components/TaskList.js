@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Task from "./Task";
 
-function TaskList({tasks}) {
+function TaskList({tasks, selectedCategory}) {
 	const [taskList, setTasks] = useState(tasks);
 
 	function handleDeleteTask(key){
@@ -10,10 +10,16 @@ function TaskList({tasks}) {
 		setTasks(newTaskList) 
 	}
 	
+	const filteredTasks = taskList.filter((task) => {
+		if (selectedCategory === "All"){
+			return true
+		}
+		return task.category === selectedCategory
+	})
 
   	return (
 		<div className="tasks">
-			{taskList.map((task) => (
+			{filteredTasks.map((task) => (
 				<Task key={task.text} text={task.text} category={task.category} handleDeleteTask={handleDeleteTask}/>
 			))}
 		</div>
