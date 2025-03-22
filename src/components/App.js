@@ -22,25 +22,16 @@ function App() {
 		setTasks(newTaskList) 
 	}
 
-	//functions to control input for task form
 	function handleTaskDetail(event){
-		console.log(event.target.value)
 		setTaskDetail(event.target.value)
 	}
 
 	function handleTaskCategory(event){
-		console.log(event.target.value)
 		setTaskCategory(event.target.value)
 	}
 	
-	function onTaskFormSubmit(event){
-		event.preventDefault()
-		console.log(event)
-		const newTask = {
-			text: taskDetail,
-			category: taskCategory
-		}
-		console.log("new task", newTask)
+	function onTaskFormSubmit(newTask){
+		console.log(newTask)
 		setTasks([...taskList, newTask])
 		setTaskDetail("");
 		setTaskCategory("Code");

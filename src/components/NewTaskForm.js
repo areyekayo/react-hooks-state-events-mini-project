@@ -2,9 +2,19 @@ import React from "react";
 
 function NewTaskForm({categories, taskDetail, handleTaskDetail, taskCategory, handleTaskCategory, onTaskFormSubmit}) {
 	//const [details, setDetails] = useState("");
+	//handle submit event and call onTaskFormSubmit prop with new task
+	
+	function handleSubmit(event){
+		event.preventDefault();
+		const newTask = {
+			text: taskDetail,
+			category: taskCategory
+		}
+		onTaskFormSubmit(newTask)
+	}
 
 	return (
-		<form className="new-task-form" onSubmit={onTaskFormSubmit}>
+		<form className="new-task-form" onSubmit={handleSubmit}>
 		<label>
 			Details
 			<input type="text" name="text" onChange={handleTaskDetail} value={taskDetail} />
